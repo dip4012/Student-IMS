@@ -1,0 +1,48 @@
+
+.studentPage{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.imageTop{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.student{
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    box-shadow: 8px 10px 20px -5px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 8px 10px 20px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 8px 10px 20px -5px rgba(0,0,0,0.75);
+    align-items: center;
+
+}
+.studentTop{
+    flex:1;
+    padding: 10px;
+}
+.studentBottom{
+    flex:2;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.contonent{
+    margin:10px 20px;
+    display: flex;
+}
+.contonent>label{
+    font-weight: 500;
+    font-size: 16px;
+    margin-right: 20px;
+}
+.value{
+font-weight: 400;
+font-size: 14px;
+
+}
