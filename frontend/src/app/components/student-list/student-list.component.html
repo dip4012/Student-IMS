@@ -1,42 +1,86 @@
-<div class="studentList">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div class="searchArea">
+  <mat-form-field appearance="fill">
+    <mat-label>Class</mat-label>
+    <mat-select #selectedClass="matSelect" (class)="(selectedClass.value)">
+      <mat-option value="" selected></mat-option>
+      <mat-option *ngFor="let class of classes" [value]="class">{{
+        class
+      }}</mat-option>
+    </mat-select>
+    <mat-hint>Enter the class to search</mat-hint>
+  </mat-form-field>
 
-        <!--- Note that these columns can be defined in any order.
-          The actual rendered columns are set as a property on the row definition" -->
+  <mat-form-field appearance="fill">
+    <mat-label>Section</mat-label>
+    <mat-select #selectedSection="matSelect" (sec)="(selectedSection.value)">
+      <mat-option value="" selected></mat-option>
+      <mat-option *ngFor="let sec of sections" [value]="sec">{{
+        sec
+      }}</mat-option>
+    </mat-select>
+    <mat-hint>Enter the section to search</mat-hint>
+  </mat-form-field>
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
-
-        <!-- Name Column -->
-
-        <ng-container matColumnDef="name">
-
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell style="margin-right: 10px;" *matCellDef="let element"> {{element.name}}<mat-icon
-                    routerLink="/student">open_in_new
-                </mat-icon>
-            </td>
-
-        </ng-container>
-
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="Roll">
-            <th mat-header-cell *matHeaderCellDef> Roll </th>
-            <td mat-cell *matCellDef="let element"> {{element.Roll}} </td>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="Dept">
-            <th mat-header-cell *matHeaderCellDef> Dept </th>
-            <td mat-cell *matCellDef="let element"> {{element.Dept}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+  <button mat-icon-button (click)="onSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
 </div>
-<router-outlet></router-outlet>
+
+<div [hidden]="!isStudentsPresent" class="studentList">
+  <table mat-table [dataSource]="students" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="gender">
+      <th mat-header-cell *matHeaderCellDef>Gender</th>
+      <td mat-cell style="margin-right: 10px" *matCellDef="let element">
+        {{ element.gender }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="class">
+      <th mat-header-cell *matHeaderCellDef>Class</th>
+      <td mat-cell *matCellDef="let element">{{ element.class }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="section">
+      <th mat-header-cell *matHeaderCellDef>Section</th>
+      <td mat-cell *matCellDef="let element">{{ element.section }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="roll">
+      <th mat-header-cell *matHeaderCellDef>Roll no.</th>
+      <td mat-cell *matCellDef="let element">{{ element.roll }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="hobby">
+      <th mat-header-cell *matHeaderCellDef>Hobby</th>
+      <td mat-cell *matCellDef="let element">{{ element.hobby }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="scienceMarks">
+      <th mat-header-cell *matHeaderCellDef>Science Marks</th>
+      <td mat-cell *matCellDef="let element">{{ element.scienceMarks }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="mathsMarks">
+      <th mat-header-cell *matHeaderCellDef>Maths Marks</th>
+      <td mat-cell *matCellDef="let element">{{ element.mathsMarks }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="computerMarks">
+      <th mat-header-cell *matHeaderCellDef>Computer Marks</th>
+      <td mat-cell *matCellDef="let element">{{ element.computerMarks }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="ColumnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let row; columns: ColumnsToDisplay"></tr>
+  </table>
+</div>

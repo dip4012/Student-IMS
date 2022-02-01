@@ -14,7 +14,7 @@ const StudentSchema = new mongoose.Schema({
 	},
 	gender: {
 		type: String,
-		enum: ["Male", "Female", "Prefer not to say"],
+		enum: ["M", "F", "Prefer not to say"],
 		default: "Prefer not to say",
 	},
 	email: {
@@ -23,7 +23,7 @@ const StudentSchema = new mongoose.Schema({
 		required: true,
 	},
 	class: {
-		type: String,
+		type: Number,
 		enum: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
 		required: true,
 	},
@@ -60,9 +60,9 @@ const StudentSchema = new mongoose.Schema({
 	},
 })
 
-StudentSchema.pre("save", async () => {
-	const salt = await bycrpt.genSalt(10)
-	this.password = await bycrpt.hash(this.password, salt)
+StudentSchema.pre("save", async function () {
+	const salt = await bcrypt.genSalt(10)
+	this.password = await bcrypt.hash(this.password, salt)
 })
 
 StudentSchema.methods.createJWT = () => {

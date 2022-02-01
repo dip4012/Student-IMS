@@ -3,8 +3,8 @@ const Student = require("../model/Student")
 
 const register = async (req, res) => {
 	const student = await Student.create({ ...req.body })
-	const token = Student.createJWT()
-	res.status(StatusCodes.CREATED).json({ name: student.name })
+	const token = student.createJWT()
+	res.status(StatusCodes.CREATED).send(token)
 }
 
 const login = async (req, res) => {
@@ -22,7 +22,7 @@ const login = async (req, res) => {
 	}
 
 	const token = Student.createJWT()
-	res.status(StatusCodes.OK).json({ name: student.name })
+	res.status(StatusCodes.OK).json({ name: student.name, token: token })
 }
 
 module.exports = { register, login }
