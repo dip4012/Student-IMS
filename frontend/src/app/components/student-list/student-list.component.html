@@ -26,7 +26,7 @@
   </button>
 </div>
 
-<div class="studentList">
+<div *ngIf="'!isStudentPresent'" class="studentList">
   <table mat-table [dataSource]="students" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>
@@ -77,7 +77,17 @@
 
     <ng-container matColumnDef="computerMarks">
       <th mat-header-cell *matHeaderCellDef>Computer Marks</th>
-      <td mat-cell *matCellDef="let element">{{ element.computerMarks }}</td>
+      <td mat-cell *matCellDef="let element">
+        {{ element.computerMarks }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="about">
+      <th mat-header-cell *matHeaderCellDef>About</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="getAbout(element)">
+          <mat-icon>trending_flat</mat-icon>
+        </button>
+      </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="ColumnsToDisplay"></tr>

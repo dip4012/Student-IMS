@@ -28,14 +28,8 @@ const getAllStudents = async (req, res) => {
 }
 
 const getStudent = async (req, res) => {
-	const query = {
-		class: req.params.class,
-		sec: req.params.sec,
-		roll: req.params.roll,
-	}
-
-	const student = await Student.find(query)
-	res.status(StatusCodes.OK).json(students)
+	const student = await Student.findById(req.params.id)
+	res.status(StatusCodes.OK).json(student)
 }
 
 const updateStudentMarks = async (req, res) => {

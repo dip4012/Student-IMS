@@ -11,9 +11,6 @@ const {
 
 router.route("/").get(getTeacherDetail).patch(updateTeacherDetail)
 router.route("/students/:class/:sec").get(getAllStudents)
-router
-	.route("/students/:class/:sec/:roll")
-	.get(getStudent)
-	.patch(updateStudentMarks)
+router.route("/students/:id").get(getStudent).patch(updateStudentMarks)
 
 module.exports = router

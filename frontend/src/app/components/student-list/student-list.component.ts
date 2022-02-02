@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
 import { StudentListService } from 'src/app/services/student-list.service';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-student-list',
@@ -28,9 +29,14 @@ export class StudentListComponent implements OnInit {
     'scienceMarks',
     'mathsMarks',
     'computerMarks',
+    'about',
   ];
 
-  constructor(private studentsListService: StudentListService) {}
+  constructor(
+    private studentsListService: StudentListService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -50,5 +56,11 @@ export class StudentListComponent implements OnInit {
 
     if (!this.students) this.isStudentsPresent = false;
     else this.isStudentsPresent = true;
+  }
+
+  getAbout(student: any) {
+    console.log(student);
+
+    this.router.navigate([student._id], { relativeTo: this.activatedRoute });
   }
 }
