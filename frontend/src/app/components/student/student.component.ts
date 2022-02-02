@@ -13,6 +13,7 @@ export class StudentComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private studentService: StudentService
   ) {}
 
@@ -29,5 +30,9 @@ export class StudentComponent implements OnInit {
         console.log(error.error.message);
       }
     );
+  }
+
+  updateMarks() {
+    this.router.navigate(['update'], { relativeTo: this.activatedRoute });
   }
 }

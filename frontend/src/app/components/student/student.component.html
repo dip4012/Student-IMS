@@ -4,52 +4,65 @@
       <img
         class="imageTop"
         src="https://picsum.photos/seed/picsum/200/300"
-        alt=""
+        alt="student profile image"
       />
     </div>
     <div class="studentBottom">
-      <div class="contonent">
+      <div class="component">
         <label>Name:-</label>
         <span class="value">{{ student.name }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Gender:-</label>
         <span class="value">{{ student.gender }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Email:-</label>
         <span class="value">{{ student.email }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Class:-</label>
         <span class="value">{{ student.class }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Section:-</label>
         <span class="value">{{ student.section }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Roll:-</label>
         <span class="value">{{ student.roll }}</span>
       </div>
-      <div class="contonent">
+
+      <div class="component">
         <label>Hobby:-</label>
         <span class="value">{{ student.hobby }}</span>
       </div>
+
+      <hr />
+
       <div class="marks">
-        <div class="contonent">
+        <div class="component">
           <label class="marksInput">Science:-</label>
           <span class="value">{{ student.scienceMarks }}</span>
         </div>
-        <div class="contonent">
+        <div class="component">
           <label class="marksInput">Math:-</label>
           <span class="value">{{ student.mathsMarks }}</span>
         </div>
-        <div class="contonent">
+        <div class="component">
           <label class="marksInput">Computer:-</label>
           <span class="value">{{ student.computerMarks }}</span>
         </div>
       </div>
+
+      <button mat-raised-button color="primary" (click)="updateMarks()">
+        Update marks
+      </button>
     </div>
   </div>
 </div>
