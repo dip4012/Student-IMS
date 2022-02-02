@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSelectChange } from '@angular/material/select';
 import { StudentListService } from 'src/app/services/student-list.service';
 
 @Component({
@@ -7,8 +8,8 @@ import { StudentListService } from 'src/app/services/student-list.service';
   styleUrls: ['./student-list.component.css'],
 })
 export class StudentListComponent implements OnInit {
-  class: any;
-  sec: any;
+  public class: any;
+  public sec: any;
   url: any;
   students: any;
   classes = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
@@ -33,11 +34,18 @@ export class StudentListComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  getClass(event: MatSelectChange) {
+    this.class = event.value;
+  }
+  getSec(event: MatSelectChange) {
+    this.sec = event.value;
+  }
+
   onSearch() {
     this.url = `http://localhost:8080/ims/teacher/details/students/${this.class}/${this.sec}`;
     this.studentsListService.getStudents(this.url).subscribe(
       (data) => (this.students = data),
-      (error) => alert(error.error.message)
+      (error) => console.log(error)
     );
 
     if (!this.students) this.isStudentsPresent = false;

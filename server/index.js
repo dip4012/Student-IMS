@@ -6,6 +6,8 @@ const app = express()
 
 const connectDB = require("./db/connect")
 
+const cors = require("cors")
+
 //middlewares
 const authenticator = require("./middleware/aunthentication")
 const errorHandlerMiddleware = require("./middleware/error_handler")
@@ -17,12 +19,13 @@ const teacherAuthRouter = require("./routes/teacherAuth")
 const teacherUtilitiesRouter = require("./routes/teacherUtilities")
 
 app.use(express.json())
+app.use(cors())
 
 app.use("/ims/student/auth", studentAuthRouter)
 app.use("/ims/student/details", authenticator, studentUtilitiesRouter)
 
-app.use("ims/teacher/auth", teacherAuthRouter)
-app.use("ims/teacher/details", authenticator, teacherUtilitiesRouter)
+app.use("/ims/teacher/auth", teacherAuthRouter)
+app.use("/ims/teacher/details", teacherUtilitiesRouter)
 
 app.use(errorHandlerMiddleware)
 

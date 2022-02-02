@@ -1,7 +1,7 @@
 <div class="searchArea">
   <mat-form-field appearance="fill">
     <mat-label>Class</mat-label>
-    <mat-select #selectedClass="matSelect" (class)="(selectedClass.value)">
+    <mat-select (selectionChange)="getClass($event)">
       <mat-option value="" selected></mat-option>
       <mat-option *ngFor="let class of classes" [value]="class">{{
         class
@@ -12,7 +12,7 @@
 
   <mat-form-field appearance="fill">
     <mat-label>Section</mat-label>
-    <mat-select #selectedSection="matSelect" (sec)="(selectedSection.value)">
+    <mat-select (selectionChange)="getSec($event)">
       <mat-option value="" selected></mat-option>
       <mat-option *ngFor="let sec of sections" [value]="sec">{{
         sec
@@ -26,7 +26,7 @@
   </button>
 </div>
 
-<div [hidden]="!isStudentsPresent" class="studentList">
+<div class="studentList">
   <table mat-table [dataSource]="students" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef>Name</th>

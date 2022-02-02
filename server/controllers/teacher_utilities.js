@@ -19,11 +19,11 @@ const updateTeacherDetail = async (req, res) => {
 
 const getAllStudents = async (req, res) => {
 	const query = {
-		class: req.params.class,
-		sec: req.params.class,
+		class: Number(req.params.class),
+		sec: req.params.sec,
 	}
 
-	const students = await Student.find(query)
+	const students = await Student.find(query).sort("roll")
 	res.status(StatusCodes.OK).json(students)
 }
 

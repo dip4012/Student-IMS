@@ -10,7 +10,7 @@ const {
 } = require("../controllers/teacher_utilities")
 
 router.route("/").get(getTeacherDetail).patch(updateTeacherDetail)
-router.route("/student/:class/:sec").get(getAllStudents)
+router.route("/students/:class/:sec").get(getAllStudents)
 router
 	.route("/students/:class/:sec/:roll")
 	.get(getStudent)
