@@ -23,4 +23,5 @@ export const routingComponents = [
   StudentListComponent,
   TeacherListComponent,
   StudentComponent,
+  UpdateMarksComponent
 ];

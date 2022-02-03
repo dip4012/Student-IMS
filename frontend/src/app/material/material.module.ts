@@ -7,6 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDividerModule } from '@angular/material/divider';
+import {MatInputModule} from '@angular/material/input'
 
 const materialComponent = [
   MatToolbarModule,
@@ -17,6 +18,7 @@ const materialComponent = [
   MatSelectModule,
   MatFormFieldModule,
   MatDividerModule,
+  MatInputModule
 ];
 
 @NgModule({
