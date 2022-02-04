@@ -17,10 +17,12 @@
     <mat-divider inset></mat-divider>
     <mat-card-actions>
       <button mat-raised-button color="primary">Login</button>
-      <button mat-raised-button color="primary">Register</button>
+      <button mat-raised-button color="primary" (click)="toRegister()">
+        Register
+      </button>
     </mat-card-actions>
     <mat-card-footer>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      <mat-progress-bar mode="indeterminate" [hidden]="hide"></mat-progress-bar>
     </mat-card-footer>
   </mat-card>
 </div>
