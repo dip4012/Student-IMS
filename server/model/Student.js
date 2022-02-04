@@ -1,6 +1,6 @@
-const mongoose = require("mongoose")
-const bcrypt = require("bcryptjs")
-const jwt = require("jsonwebtoken")
+const mongoose = require("mongoose");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const StudentSchema = new mongoose.Schema({
 	name: {
@@ -14,7 +14,7 @@ const StudentSchema = new mongoose.Schema({
 	},
 	gender: {
 		type: String,
-		enum: ["M", "F", "Prefer not to say"],
+		enum: ["Male", "Female", "Prefer not to say"],
 		default: "Prefer not to say",
 	},
 	email: {
@@ -58,25 +58,25 @@ const StudentSchema = new mongoose.Schema({
 		min: 0,
 		max: 100,
 	},
-})
+});
 
 StudentSchema.pre("save", async function () {
-	const salt = await bcrypt.genSalt(10)
-	this.password = await bcrypt.hash(this.password, salt)
-})
+	const salt = await bcrypt.genSalt(10);
+	this.password = await bcrypt.hash(this.password, salt);
+});
 
 StudentSchema.methods.createJWT = () => {
 	const token = jwt.sign(
 		{ userId: this._id, name: this.name },
 		process.env.JWT_SECRET,
 		{ expiresIn: process.env.JWT_LIFETIME }
-	)
-	return token
-}
+	);
+	return token;
+};
 
 StudentSchema.methods.comparePassword = async (enteredPassword) => {
-	const isMatch = await bcrypt.compare(enteredPassword, this.password)
-	return isMatch
-}
+	const isMatch = await bcrypt.compare(enteredPassword, this.password);
+	return isMatch;
+};
 
-module.exports = mongoose.model("Student", StudentSchema)
+module.exports = mongoose.model("Student", StudentSchema);
