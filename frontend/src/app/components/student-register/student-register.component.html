@@ -1,0 +1,137 @@
+<mat-stepper linear #stepper color="primary">
+  <mat-step [stepControl]="personalDetails">
+    <form [formGroup]="personalDetails">
+      <ng-template matStepLabel
+        >Fill out your name and other personal details</ng-template
+      >
+
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" type="text" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Class</mat-label>
+        <mat-select formControlName="class">
+          <mat-option
+            *ngFor="let class of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]"
+            [value]="class"
+          >
+            {{ class }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Section</mat-label>
+        <mat-select formControlName="section">
+          <mat-option *ngFor="let sec of ['A', 'B', 'C', 'D']" [value]="sec">
+            {{ sec }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Roll number</mat-label>
+        <input matInput formControlName="roll" type="number" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Gender</mat-label>
+        <mat-select formControlName="gender">
+          <mat-option
+            *ngFor="let gender of ['Male', 'Female']"
+            [value]="gender"
+          >
+            {{ gender }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Hobbies</mat-label>
+        <input matInput formControlName="hobby" type="text" />
+      </mat-form-field>
+
+      <div>
+        <button
+          mat-raised-button
+          matStepperNext
+          [disabled]="personalDetails.invalid"
+          color="primary"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="emailPassword">
+    <form [formGroup]="emailPassword">
+      <ng-template matStepLabel>Fill out your email and password</ng-template>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput formControlName="password" />
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="fill"
+        [color]="emailPassword.errors?.['misMatch'] && emailPassword.get('confirmPassword')?.touched"
+      >
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput formControlName="confirmPassword" />
+      </mat-form-field>
+      <small
+        color="warn"
+        *ngIf="emailPassword.errors?.['misMatch'] && emailPassword.get('confirmPassword')?.touched"
+        >Passwords do not match</small
+      >
+
+      <div>
+        <button mat-raised-button matStepperPrevious color="primary">
+          Back
+        </button>
+
+        <button
+          mat-raised-button
+          matStepperNext
+          [disabled]="emailPassword.invalid"
+          color="primary"
+        >
+          Next
+        </button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="terms">
+    <div [formGroup]="terms">
+      <ng-template matStepLabel>Accept terms and conditions</ng-template>
+      <h4>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex rerum
+        dolores eos officiis maxime sint. Quos pariatur id perspiciatis
+        voluptatem qui corporis natus voluptatibus assumenda atque ad
+        repudiandae sed nisi, nihil quidem saepe debitis eveniet illo. Dolores,
+        temporibus dignissimos. Eligendi minima doloremque aliquam aperiam
+        beatae. Qui eum vero neque nisi.
+      </h4>
+      <p><mat-checkbox formControlName="accepted">Accept</mat-checkbox></p>
+
+      <button mat-raised-button matStepperPrevious color="primary">Back</button>
+      <button
+        mat-raised-button
+        [disabled]="!terms.get('accepted')?.value"
+        (click)="onSubmit()"
+        color="primary"
+      >
+        Submit
+      </button>
+    </div>
+  </mat-step>
+</mat-stepper>

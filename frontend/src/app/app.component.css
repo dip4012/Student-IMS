@@ -1,15 +1,24 @@
-*{
-    margin:0;
-    padding: 0;
-}
-.home{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
+* {
+  margin: 0;
 }
 
-.body{
-    padding: 20px;
-    width: 90%;
+mat-drawer {
+  height: 100%;
+  width: 15%;
+}
+
+mat-drawer-container {
+  height: 100%;
+}
+
+.navButtons {
+  width: 100%;
+  height: 7%;
+  margin: 0;
+}
+
+.navButtons > button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
 }

@@ -3,24 +3,29 @@
     <p>
       <mat-form-field class="full-width">
         <mat-label>Science Marks</mat-label>
-        <input matInput type="number" [(ngModel)]="science"/>
+        <input matInput type="number" [(ngModel)]="science" />
       </mat-form-field>
     </p>
     <p>
       <mat-form-field class="full-width">
         <mat-label>Maths Marks</mat-label>
-        <input matInput type="number" [(ngModel)]="maths"/>
+        <input matInput type="number" [(ngModel)]="maths" />
       </mat-form-field>
     </p>
 
     <p>
       <mat-form-field class="full-width">
         <mat-label>Computer Marks</mat-label>
-        <input matInput type="number" [(ngModel)]="computer"/>
+        <input matInput type="number" [(ngModel)]="computer" />
       </mat-form-field>
     </p>
     <p>
-      <button (click)="updateMarks()" mat-raised-button color="primary" class="full-width">
+      <button
+        (click)="updateMarks()"
+        mat-raised-button
+        color="primary"
+        class="full-width"
+      >
         Update!!
       </button>
     </p>
