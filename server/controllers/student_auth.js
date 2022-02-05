@@ -16,13 +16,13 @@ const login = async (req, res) => {
 		throw new UnauthenticatedError("Email does not exist");
 	}
 
-	const isPasswordCorrect = await Student.comparePassword(password);
+	const isPasswordCorrect = await student.comparePassword(password);
 	if (!isPasswordCorrect) {
 		throw new UnauthenticatedError("Invalid password");
 	}
 
-	const token = Student.createJWT();
-	res.status(StatusCodes.OK).json({ name: student.name, token: token });
+	const token = student.createJWT();
+	res.status(StatusCodes.OK).send(student._id);
 };
 
 module.exports = { register, login };

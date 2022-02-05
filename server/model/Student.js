@@ -65,7 +65,7 @@ StudentSchema.pre("save", async function () {
 	this.password = await bcrypt.hash(this.password, salt);
 });
 
-StudentSchema.methods.createJWT = () => {
+StudentSchema.methods.createJWT = function () {
 	const token = jwt.sign(
 		{ userId: this._id, name: this.name },
 		process.env.JWT_SECRET,
@@ -74,7 +74,7 @@ StudentSchema.methods.createJWT = () => {
 	return token;
 };
 
-StudentSchema.methods.comparePassword = async (enteredPassword) => {
+StudentSchema.methods.comparePassword = async function (enteredPassword) {
 	const isMatch = await bcrypt.compare(enteredPassword, this.password);
 	return isMatch;
 };
