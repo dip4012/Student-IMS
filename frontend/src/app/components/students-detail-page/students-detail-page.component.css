@@ -1,0 +1,22 @@
+mat-card-header {
+  margin: 2rem 1rem;
+  width: 100%;
+}
+
+table {
+  margin: 6rem 2rem;
+  width: 100%;
+}
+
+tr {
+  width: 100%;
+}
+
+td {
+  width: 50%;
+  padding: 1rem;
+}
+
+#edit_button {
+  margin: 0 1rem;
+}

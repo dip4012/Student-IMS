@@ -6,8 +6,9 @@ import { AppComponent } from './app.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddTokenService } from './services/add-token.service';
 
 @NgModule({
   declarations: [AppComponent, routingComponents],
@@ -20,7 +21,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AddTokenService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

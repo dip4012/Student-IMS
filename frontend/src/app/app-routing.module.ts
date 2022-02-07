@@ -6,11 +6,16 @@ import { StudentComponent } from './components/student/student.component';
 import { UpdateMarksComponent } from './components/update-marks/update-marks.component';
 import { StudentRegisterComponent } from './components/student-register/student-register.component';
 import { StudentHomepageComponent } from './components/student-homepage/student-homepage.component';
+import {
+  StudentsDetailPageComponent,
+  UpdateDialog,
+} from './components/students-detail-page/students-detail-page.component';
 
 const routes: Routes = [
   { path: 'student', component: StudentHomepageComponent },
   { path: 'student/register', component: StudentRegisterComponent },
-  { path: 'student/:id', component: StudentComponent },
+  { path: 'student/:id', component: StudentsDetailPageComponent },
+
   { path: 'students-list', component: StudentListComponent },
   { path: 'students-list/:id', component: StudentComponent },
   { path: 'students-list/:id/update', component: UpdateMarksComponent },
@@ -28,4 +33,6 @@ export const routingComponents = [
   UpdateMarksComponent,
   StudentRegisterComponent,
   StudentHomepageComponent,
+  StudentsDetailPageComponent,
+  UpdateDialog,
 ];

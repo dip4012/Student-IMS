@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatSelectChange } from '@angular/material/select';
-import { StudentListService } from 'src/app/services/student-list.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
@@ -33,9 +33,9 @@ export class StudentListComponent implements OnInit {
   ];
 
   constructor(
-    private studentsListService: StudentListService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {}
@@ -49,9 +49,14 @@ export class StudentListComponent implements OnInit {
 
   onSearch() {
     this.url = `http://localhost:8080/ims/teacher/details/students/${this.class}/${this.sec}`;
-    this.studentsListService.getStudents(this.url).subscribe(
-      (data) => (this.students = data),
-      (error) => console.log(error)
+
+    this.http.get<Student[]>(this.url).subscribe(
+      (data) => {
+        this.students = data;
+      },
+      (error) => {
+        console.log(error);
+      }
     );
 
     if (!this.students) this.isStudentsPresent = false;
@@ -63,4 +68,17 @@ export class StudentListComponent implements OnInit {
 
     this.router.navigate([student._id], { relativeTo: this.activatedRoute });
   }
+}
+
+interface Student {
+  name: String;
+  gender: String;
+  email: String;
+  class: String;
+  section: String;
+  roll: Number;
+  hobby: String;
+  scienceMarks: Number;
+  mathsMarks: Number;
+  computerMarks: Number;
 }

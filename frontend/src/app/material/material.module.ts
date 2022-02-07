@@ -14,6 +14,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatCardModule } from '@angular/material/card';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const materialComponent = [
   MatToolbarModule,
@@ -31,6 +32,7 @@ const materialComponent = [
   MatCardModule,
   MatSidenavModule,
   MatProgressBarModule,
+  MatDialogModule,
 ];
 
 @NgModule({

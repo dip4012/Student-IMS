@@ -1,0 +1,61 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title
+      >{{ student.name }}
+      <button mat-mini-fab id="edit_button" (click)="openDialog()">
+        <mat-icon>edit</mat-icon>
+      </button></mat-card-title
+    >
+  </mat-card-header>
+  <mat-card-content>
+    <table>
+      <tr>
+        <td><strong>Gender</strong></td>
+        <td>{{ student.gender }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>email</strong></td>
+        <td>{{ student.email }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Class</strong></td>
+        <td>{{ student.class }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Section</strong></td>
+        <td>{{ student.section }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Roll no.</strong></td>
+        <td>{{ student.roll }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Science Marks</strong></td>
+        <td>{{ student.scienceMarks }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Computer Marks</strong></td>
+        <td>{{ student.computerMarks }}</td>
+      </tr>
+
+      <tr>
+        <td><strong>Maths Marks</strong></td>
+        <td>{{ student.mathsMarks }}</td>
+      </tr>
+
+      <tr>
+        <td>
+          <button mat-raised-button color="warn" (click)="logout()">
+            <mat-icon>logout</mat-icon>Logout
+          </button>
+        </td>
+      </tr>
+    </table>
+  </mat-card-content>
+</mat-card>

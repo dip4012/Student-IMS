@@ -66,9 +66,12 @@ export class StudentRegisterComponent implements OnInit {
       hobby: this.personalDetails.get('hobby')?.value,
     };
 
-    this.http.post(url, data).subscribe(
+    this.http.post<any>(url, data).subscribe(
       (res) => {
-        this.id = res;
+        this.id = res.student._id;
+        const token = res.token;
+
+        localStorage.setItem('id_token', token);
       },
       (error) => {
         console.log(error);

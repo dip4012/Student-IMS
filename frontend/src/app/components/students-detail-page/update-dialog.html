@@ -1,0 +1,53 @@
+<h1>Update</h1>
+<div mat-dialog-content>
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>email</mat-label>
+      <input matInput [(ngModel)]="data.email" />
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Class</mat-label>
+      <mat-select [(ngModel)]="data.class">
+        <mat-option
+          *ngFor="let class of [1,2,3,4,5,6,7,8,9,10,11,12]"
+          [value]="class"
+          >{{class}}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Section</mat-label>
+      <mat-select [(ngModel)]="data.section">
+        <mat-option *ngFor="let sec of ['A','B','C','D']" [value]="sec"
+          >{{sec}}</mat-option
+        >
+      </mat-select>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Roll</mat-label>
+      <input matInput type="number" [(ngModel)]="data.roll" />
+    </mat-form-field>
+  </p>
+</div>
+<div>
+  <button
+    mat-raised-button
+    (click)="onCancel()"
+    color="primary"
+    style="margin-right: 1rem"
+  >
+    Cancel
+  </button>
+  <button mat-raised-button [mat-dialog-close]="data" color="primary">
+    OK
+  </button>
+</div>

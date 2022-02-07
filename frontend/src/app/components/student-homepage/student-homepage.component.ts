@@ -11,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class StudentHomepageComponent implements OnInit {
   loginForm!: FormGroup;
   hide = true;
-  id: any;
+  token!: any;
+  id!: any;
 
   constructor(
     private fb: FormBuilder,
@@ -36,22 +37,30 @@ export class StudentHomepageComponent implements OnInit {
     );
   }
 
-  login() {
+  async login() {
     const url = 'http://localhost:8080/ims/student/auth/login';
     const data = {
       email: this.loginForm.get('email')?.value,
       password: this.loginForm.get('password')?.value,
     };
 
-    this.http.post(url, data).subscribe(
+    await this.http.post<any>(url, data).subscribe(
       (res) => {
-        this.id = res;
+        this.id = res.student._id;
+        this.token = res.token;
+
+        localStorage.setItem('id_token', this.token);
       },
       (error) => {
         console.log(error);
       }
     );
 
-    this.router.navigate([this.id], { relativeTo: this.activatedRoute });
+    this.hide = false;
+    setTimeout(
+      () =>
+        this.router.navigate([this.id], { relativeTo: this.activatedRoute }),
+      2000
+    );
   }
 }

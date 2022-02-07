@@ -1,6 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { StudentService } from 'src/app/services/student.service';
 
 @Component({
   selector: 'app-student',
@@ -10,11 +10,12 @@ import { StudentService } from 'src/app/services/student.service';
 export class StudentComponent implements OnInit {
   selectedId: any;
   student: any;
+  url: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private studentService: StudentService
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -22,12 +23,13 @@ export class StudentComponent implements OnInit {
       this.selectedId = params.get('id');
     });
 
-    this.studentService.getStudent(this.selectedId).subscribe(
+    this.url = `http://localhost:8080/ims/teacher/details/students/${this.selectedId}`;
+    this.http.get(this.url).subscribe(
       (data) => {
         this.student = data;
       },
       (error) => {
-        console.log(error.error.message);
+        console.log(error);
       }
     );
   }
