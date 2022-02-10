@@ -1,0 +1,28 @@
+<div class="body_container">
+  <mat-card>
+    <mat-card-title>Welcome,</mat-card-title>
+    <mat-card-subtitle>Login to continue</mat-card-subtitle>
+    <mat-card-content>
+      <form [formGroup]="loginForm">
+        <mat-form-field color="primary">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+        <mat-form-field color="primary">
+          <mat-label>Password</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+      </form>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="login()">Login</button>
+      <button mat-raised-button color="primary" (click)="toRegister()">
+        Register
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" [hidden]="hide"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

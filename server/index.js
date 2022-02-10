@@ -1,42 +1,42 @@
-require("dotenv").config()
-require("express-async-errors")
+require("dotenv").config();
+require("express-async-errors");
 
-const express = require("express")
-const app = express()
+const express = require("express");
+const app = express();
 
-const connectDB = require("./db/connect")
+const connectDB = require("./db/connect");
 
-const cors = require("cors")
+const cors = require("cors");
 
 //middlewares
-const authenticator = require("./middleware/aunthentication")
-const errorHandlerMiddleware = require("./middleware/error_handler")
+const authenticator = require("./middleware/aunthentication");
+const errorHandlerMiddleware = require("./middleware/error_handler");
 
 //routes
-const studentAuthRouter = require("./routes/studentAuth")
-const studentUtilitiesRouter = require("./routes/studentUtilities")
-const teacherAuthRouter = require("./routes/teacherAuth")
-const teacherUtilitiesRouter = require("./routes/teacherUtilities")
+const studentAuthRouter = require("./routes/studentAuth");
+const studentUtilitiesRouter = require("./routes/studentUtilities");
+const teacherAuthRouter = require("./routes/teacherAuth");
+const teacherUtilitiesRouter = require("./routes/teacherUtilities");
 
-app.use(express.json())
-app.use(cors())
+app.use(express.json());
+app.use(cors());
 
-app.use("/ims/student/auth", studentAuthRouter)
-app.use("/ims/student/details", authenticator, studentUtilitiesRouter)
+app.use("/ims/student/auth", studentAuthRouter);
+app.use("/ims/student/details", authenticator, studentUtilitiesRouter);
 
-app.use("/ims/teacher/auth", teacherAuthRouter)
-app.use("/ims/teacher/details", teacherUtilitiesRouter)
+app.use("/ims/teacher/auth", teacherAuthRouter);
+app.use("/ims/teacher/details", authenticator, teacherUtilitiesRouter);
 
-app.use(errorHandlerMiddleware)
+app.use(errorHandlerMiddleware);
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
 const start = async () => {
 	try {
-		await connectDB(process.env.MONGO_URI)
-		app.listen(port, console.log(`Server listening at port ${port}`))
+		await connectDB(process.env.MONGO_URI);
+		app.listen(port, console.log(`Server listening at port ${port}`));
 	} catch (error) {
-		console.log(error)
+		console.log(error);
 	}
-}
+};
 
-start()
+start();

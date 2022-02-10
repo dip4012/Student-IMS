@@ -9,9 +9,11 @@ import { MaterialModule } from './material/material.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddTokenService } from './services/add-token.service';
+import { TeacherHomepageComponent } from './components/teacher-homepage/teacher-homepage.component';
+import { TeacherNavigationComponent } from './components/teacher-navigation/teacher-navigation.component';
 
 @NgModule({
-  declarations: [AppComponent, routingComponents],
+  declarations: [AppComponent, routingComponents, TeacherHomepageComponent, TeacherNavigationComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
